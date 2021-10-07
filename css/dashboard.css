@@ -98,3 +98,51 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+
+  /* card */
+
+  .card{
+    cursor: pointer;
+  }
+
+  /* Annimation */
+
+  .annimation {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Nunito', 'sans-serif';
+    font-size: 5vw;
+  }
+  
+  .bottom-container,
+  .top-container {
+    width: 40vw;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20vh;
+    left: 40vw;
+    padding: 1vw;
+  }
+  
+  .bottom-container {
+    color: #232323;
+  }
+  
+  .top-container {
+    background-color: red;
+    color: white;
+    clip-path: circle(13% at 85% 50%);
+    animation: circleMove 20s ease-in-out infinite;
+  }
+  
+  @keyframes circleMove {
+    0%, 100% {
+      clip-path: circle(13% at 85% 50%);
+    }
+    50% {
+      clip-path: circle(13% at 15% 50%);
+    }
+  }
