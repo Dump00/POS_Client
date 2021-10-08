@@ -105,6 +105,18 @@ body {
     cursor: pointer;
   }
 
+  /* delete-icon */
+
+  .fa-trash {
+    cursor: pointer;
+    color: red;
+  }
+
+  .fa-trash :hover {
+    width: 10%;
+    height: 10%;
+  }
+
   /* Annimation */
 
   .annimation {
@@ -146,4 +158,6 @@ body {
       clip-path: circle(13% at 15% 50%);
     }
   }
+
+
 
