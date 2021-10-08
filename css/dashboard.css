@@ -109,7 +109,7 @@ body {
 
   .annimation {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     font-family: 'Nunito', 'sans-serif';
     font-size: 5vw;
   }
