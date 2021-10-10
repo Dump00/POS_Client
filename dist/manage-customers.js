@@ -4,6 +4,7 @@ const PAGE_SIZE = 6;
 let customers = [];
 let totalCustomers = 0;
 let selectedPage = 1;
+let pageCount = 1;
 loadAllCustomers();
 /* load all customers */
 function loadAllCustomers() {
@@ -34,12 +35,30 @@ function loadAllCustomers() {
 }
 /* pagination */
 function initPagination() {
-    const PAGE_COUNT = Math.ceil(totalCustomers / PAGE_SIZE);
-    let html = `<li class="page-item"><a class="page-link" href="#">Previous</a></li>`;
-    for (let i = 0; i < PAGE_COUNT; i++) {
-        html += `<li class="page-item"><a class="page-link" href="#">${i + 1}</a></li>`;
+    pageCount = Math.ceil(totalCustomers / PAGE_SIZE);
+    let html = `<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>`;
+    for (let i = 0; i < pageCount; i++) {
+        html += `<li class="page-item ${selectedPage === (i + 1) ? 'active' : ''}"><a class="page-link" href="javascript:void(0);">${i + 1}</a></li>`;
     }
-    html += `<li class="page-item"><a class="page-link" href="#">Next</a></li>`;
+    html += `<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>`;
     $('.pagination').html(html);
+    if (selectedPage === 1) {
+        $('.page-item:first-child').addClass('disabled');
+    }
+    else if (selectedPage === pageCount) {
+        $('.page-item:last-child').addClass('disabled');
+    }
+    $('.page-item:first-child').on('click', () => navigateToPage(selectedPage - 1));
+    $('.page-item:last-child').on('click', () => navigateToPage(selectedPage + 1));
+    $('.page-item:not(.page-item:first-child, .page-item:last-child)').on('click', function () {
+        navigateToPage(+$(this).text());
+    });
+}
+/* pagination navigation */
+function navigateToPage(page) {
+    if (page < 1 || page > pageCount)
+        throw 'Invalid Page Number';
+    selectedPage = page;
+    loadAllCustomers();
 }
 export {};
