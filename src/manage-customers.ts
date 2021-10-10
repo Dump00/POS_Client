@@ -55,6 +55,9 @@ function initPagination(): void {
 
     pageCount = Math.ceil(totalCustomers/PAGE_SIZE);
 
+    showOrHidePagination();
+    if(pageCount == 1) return;
+
     let html = `<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>`;
 
     for(let i = 0; i < pageCount; i++){
@@ -86,6 +89,10 @@ function navigateToPage(page: number): void {
     selectedPage = page;
 
     loadAllCustomers();
+}
 
+/* hide tha pagination whenever needed */
 
+function showOrHidePagination(): void {
+    pageCount > 1 ? $('.pagination').show() : $('.pagination').hide();
 }

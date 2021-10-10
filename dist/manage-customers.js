@@ -36,6 +36,9 @@ function loadAllCustomers() {
 /* pagination */
 function initPagination() {
     pageCount = Math.ceil(totalCustomers / PAGE_SIZE);
+    showOrHidePagination();
+    if (pageCount == 1)
+        return;
     let html = `<li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>`;
     for (let i = 0; i < pageCount; i++) {
         html += `<li class="page-item ${selectedPage === (i + 1) ? 'active' : ''}"><a class="page-link" href="javascript:void(0);">${i + 1}</a></li>`;
@@ -60,5 +63,9 @@ function navigateToPage(page) {
         throw 'Invalid Page Number';
     selectedPage = page;
     loadAllCustomers();
+}
+/* hide tha pagination whenever needed */
+function showOrHidePagination() {
+    pageCount > 1 ? $('.pagination').show() : $('.pagination').hide();
 }
 export {};
