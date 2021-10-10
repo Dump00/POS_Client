@@ -1,1 +1,4 @@
-console.log('Hello');
+import $ from 'jquery';
+
+console.log($);
+
