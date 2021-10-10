@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "watch": "tsc --watch",
-    "start" : "rm -rf ./dist && tsc && node ./dist/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "rm -rf ./dist && tsc && node ./dist/main.js"
   },
   "keywords": [],
   "author": "Rushain Sovis",

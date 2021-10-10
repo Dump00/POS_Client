@@ -1,2 +1,2 @@
-import $ from 'jquery';
-console.log($);
+"use strict";
+const income = $('#income-value').html();

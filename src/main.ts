@@ -1,4 +1,6 @@
-import $ from 'jquery';
+const income = $('#income-value').html();
 
-console.log($);
+
+
+
 
