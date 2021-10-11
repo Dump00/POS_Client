@@ -45,6 +45,7 @@ function initPagination() {
     }
     html += `<li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>`;
     $('.pagination').html(html);
+    $('.page-item .page-link').on('click', (eventData) => eventData.preventDefault());
     if (selectedPage === 1) {
         $('.page-item:first-child').addClass('disabled');
     }

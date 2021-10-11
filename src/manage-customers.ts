@@ -68,6 +68,8 @@ function initPagination(): void {
 
     $('.pagination').html(html);
 
+    $('.page-item .page-link').on('click', (eventData) => eventData.preventDefault());
+
     if(selectedPage === 1){
         $('.page-item:first-child').addClass('disabled');
     }else if(selectedPage === pageCount){
@@ -96,3 +98,4 @@ function navigateToPage(page: number): void {
 function showOrHidePagination(): void {
     pageCount > 1 ? $('.pagination').show() : $('.pagination').hide();
 }
+
