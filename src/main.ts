@@ -13,8 +13,6 @@ function loadDetails(): void {
         if(http.readyState === http.DONE){
             if(http.status !== 200) return;
             totalCustomers = +(http.getResponseHeader('X-Total-Count'))!;
-            
-            
             ($('#customer-count').html(totalCustomers+''));
             
         }
@@ -24,7 +22,7 @@ function loadDetails(): void {
 
     http.send();
 }
- 
+
 
 
 
