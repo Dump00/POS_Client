@@ -69,4 +69,27 @@ function navigateToPage(page) {
 function showOrHidePagination() {
     pageCount > 1 ? $('.pagination').show() : $('.pagination').hide();
 }
+/* save button click */
+$('#btn-save').on('click', (eventData) => {
+    eventData.preventDefault();
+    const txtId = $('#txtId');
+    const txtName = $('#txtName');
+    const txtAddress = $('#txtAddress');
+    let id = txtId.val().trim();
+    let name = txtName.val().trim();
+    let address = txtAddress.val().trim();
+    if (!/^C\d{3}$/.test(id)) {
+        alert('Invalid Customer ID');
+        txtId.trigger('select');
+    }
+    if (!/^[A-Za-z ]+$/.test(name)) {
+        alert('Invalid Customer Name');
+        txtName.trigger('select');
+    }
+    if (address.length < 3) {
+        alert('Invalid Customer Address');
+        txtAddress.trigger('select');
+    }
+    saveCustomer();
+});
 export {};

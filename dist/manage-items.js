@@ -33,7 +33,6 @@ function loadAllItems() {
 }
 /* pagination */
 function initPagination() {
-    console.log(totalItems);
     pageCount = Math.ceil(totalItems / PAGE_SIZE);
     showOrHidePagination();
     if (pageCount == 1)

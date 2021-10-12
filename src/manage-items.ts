@@ -43,10 +43,7 @@ function loadAllItems(): void {
 
 /* pagination */
 
-function initPagination(): void {
-
-    console.log(totalItems);
-    
+function initPagination(): void {    
 
     pageCount = Math.ceil(totalItems/PAGE_SIZE);
 
