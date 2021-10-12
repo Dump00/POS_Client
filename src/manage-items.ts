@@ -24,8 +24,8 @@ function loadAllItems(): void {
                 const rowHtml = `<tr>
                                     <td>${c.code}</td>
                                     <td>${c.description}</td>
-                                    <td>${c.unitPrice}</td>
                                     <td>${c.qtyOnHand}</td>
+                                    <td>${c.unitPrice}</td>
                                     <td><i class="fas fa-trash"></i></td>
                                 </tr>`
                 $('#tblItems tbody').append(rowHtml)
