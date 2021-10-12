@@ -135,6 +135,11 @@ $('#btn-save').on('click', (eventData) => {
 
 /* save item */
 
+
+/**
+ * Bug!
+ */
+
 function saveItem(item: Item): void {
 
     console.log(item);

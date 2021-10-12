@@ -102,6 +102,9 @@ $('#btn-save').on('click', (eventData) => {
     saveItem(new Item(code, description, +qtyOnHand, +unitPrice));
 });
 /* save item */
+/**
+ * Bug!
+ */
 function saveItem(item) {
     console.log(item);
     const http = new XMLHttpRequest();
