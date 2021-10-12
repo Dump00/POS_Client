@@ -1,3 +1,4 @@
+import { Customer } from "./dto/customer.js";
 const BASE_API = 'http://localhost:8080/pos';
 const CUSTOMER_SERVICE_API = `${BASE_API}/customers`;
 const PAGE_SIZE = 6;
@@ -81,15 +82,36 @@ $('#btn-save').on('click', (eventData) => {
     if (!/^C\d{3}$/.test(id)) {
         alert('Invalid Customer ID');
         txtId.trigger('select');
+        return;
     }
     if (!/^[A-Za-z ]+$/.test(name)) {
         alert('Invalid Customer Name');
         txtName.trigger('select');
+        return;
     }
     if (address.length < 3) {
         alert('Invalid Customer Address');
         txtAddress.trigger('select');
+        return;
     }
-    saveCustomer();
+    saveCustomer(new Customer(id, name, address));
 });
-export {};
+/* save customer */
+function saveCustomer(customer) {
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if (http.readyState === http.DONE) {
+            if (http.status !== 201) {
+                alert('Failed to save the customer, try again..!');
+                return;
+            }
+            alert('Customer has been save successfully.');
+            navigateToPage(pageCount);
+            $('#txtId, #txtName, #txtAddress').val('');
+            $('#txtId').trigger('focus');
+        }
+    };
+    http.open('POST', CUSTOMER_SERVICE_API, true);
+    http.setRequestHeader('Content-Type', 'application/json');
+    http.send(JSON.stringify(customer));
+}
