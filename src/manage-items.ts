@@ -1,4 +1,4 @@
-import { Item } from "./dto/item";
+import { Item } from "./dto/item.js";
 
 const BASE_API = 'http://localhost:8080/pos';
 const ITEM_SERVICE_API = `${BASE_API}/items`;
@@ -128,4 +128,37 @@ $('#btn-save').on('click', (eventData) => {
         txtCode.trigger('focus');
         return;
     }
+
+    saveItem(new Item(code, description, +qtyOnHand, +unitPrice));
 });
+
+
+/* save item */
+
+function saveItem(item: Item): void {
+
+    console.log(item);
+    
+
+    const http = new XMLHttpRequest();
+
+    http.onreadystatechange = () => {
+        if(http.readyState === http.DONE){
+            if(http.status !== 201){
+                alert('Failed to save the Item, try again...!');
+                return;
+            }
+            alert('Item has been saved successfully');
+            navigateToPage(pageCount);
+            $('#txtCode, #txtDescription, #txtQtyOnHand, #txtUnitPrice').val('');
+            $('#txtCode').trigger('focus');
+        }
+
+    };
+
+    http.open('POST', ITEM_SERVICE_API, true);
+
+    http.setRequestHeader('Content-Type', 'application/json');
+
+    http.send(JSON.stringify(item));
+}

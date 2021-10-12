@@ -105,7 +105,7 @@ function saveCustomer(customer) {
                 alert('Failed to save the customer, try again..!');
                 return;
             }
-            alert('Customer has been save successfully.');
+            alert('Customer has been saved successfully.');
             navigateToPage(pageCount);
             $('#txtId, #txtName, #txtAddress').val('');
             $('#txtId').trigger('focus');
