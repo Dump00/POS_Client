@@ -129,7 +129,7 @@ body {
   .bottom-container,
   .top-container {
     width: 40vw;
-    height: 35vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
