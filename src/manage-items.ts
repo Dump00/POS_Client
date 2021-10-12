@@ -89,3 +89,43 @@ function navigateToPage(page: number): void {
 function showOrHidePagination(): void {
     pageCount > 1 ? $('.pagination').show() : $('.pagination').hide();
 }
+
+/* save button click */
+
+$('#btn-save').on('click', (eventData) => {
+    eventData.preventDefault();
+
+    const txtCode =$('#txtCode');
+    const txtDescription = $('#txtDescription');
+    const txtQtyOnHand = $('#txtQtyOnHand');
+    const txtUnitPrice = $('#txtUnitPrice');
+
+    let code = (txtCode.val() as string).trim();
+    let description = (txtDescription.val() as string).trim();
+    let qtyOnHand = (txtQtyOnHand.val() as string).trim();
+    let unitPrice = (txtUnitPrice.val() as string).trim();
+
+    if(!/^I\d{3}$/.test(code)){
+        alert('Invalid Item Code');
+        txtCode.trigger('focus');
+        return;
+    }
+
+    if(!/^[A-Za-z ]+$/.test(description)){
+        alert('Invalid Item Description');
+        txtCode.trigger('focus');
+        return;
+    }
+
+    if(+qtyOnHand < 0 || !/\d+/.test(qtyOnHand)){
+        alert('Invalid Quantity on Hand');
+        txtCode.trigger('focus');
+        return;
+    }
+
+    if(+unitPrice < 0 || !/\d+./.test(unitPrice)){
+        alert('Invalid Unit Price');
+        txtCode.trigger('focus');
+        return;
+    }
+});
