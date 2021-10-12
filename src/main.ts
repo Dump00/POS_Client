@@ -35,9 +35,6 @@ function loadNewCustomerCount(): void {
 
 function loadNewItemsCount(): void {
 
-    console.log('working');
-    
-
     const http = new XMLHttpRequest();
 
     http.onreadystatechange = () => {

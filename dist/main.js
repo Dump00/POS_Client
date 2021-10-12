@@ -23,7 +23,6 @@ function loadNewCustomerCount() {
 ;
 /* get the item count */
 function loadNewItemsCount() {
-    console.log('working');
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === http.DONE) {
