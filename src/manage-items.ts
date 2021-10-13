@@ -20,6 +20,7 @@ function loadAllItems(): void {
             totalItems = +(http.getResponseHeader('X-Total-Count'))!;
             $('#tblItems tbody tr').remove();
             items = JSON.parse(http.responseText); 
+            
             items.forEach((c) => {
                 const rowHtml = `<tr>
                                     <td>${c.code}</td>
@@ -129,7 +130,7 @@ $('#btn-save').on('click', (eventData) => {
         return;
     }
 
-    saveItem(new Item(code, description, +qtyOnHand, +unitPrice));
+    ($('#btn-save').html() === 'Save') ? saveItem(new Item(code, description, +qtyOnHand, +unitPrice)): updateItem(new Item(code, description, +qtyOnHand, +unitPrice));
 })
 
 
@@ -201,3 +202,60 @@ function deleteItem(code: string): void {
 
     http.send();
 }
+
+/* table row click */
+
+$('#tblItems tbody').on('click', 'tr', function(eventData) {
+
+    const code = $(this).find('td:first-child').html();
+    const description = $(this).find('td:nth-child(2)').html();
+    const qtyOnHand = $(this).find('td:nth-child(3)').html();
+    const unitPrice = $(this).find('td:nth-child(4)').html();
+    
+    $('#txtCode').val(code);
+    $('#txtDescription').val(description);
+    $('#txtQtyOnHand').val(qtyOnHand);
+    $('#txtUnitPrice').val(unitPrice);
+
+    $('#btn-save').html('Update');
+                
+});
+
+/**
+ * 
+ * @todo: when code changes for a already in item then that item is going to update insted the selected one
+ */
+
+
+/* update item */
+
+function updateItem(item: Item) {
+
+    const http = new XMLHttpRequest();
+
+    http.onreadystatechange = () => {
+        if(http.readyState === http.DONE){
+            if(http.status !== 204){
+                alert('Failed to updae the item!')
+                return;
+            }
+            alert('Item has been updated successfully.');
+            $('#txtCode').val('');
+            $('#txtDescription').val('');
+            $('#txtQtyOnHand').val('');
+            $('#txtUnitPrice').val('');
+
+            $('#btn-save').html('Save');
+            navigateToPage(pageCount);
+        }
+
+    }
+
+    http.open('PUT', ITEM_SERVICE_API + `?id=${item.code}`, true);
+
+    http.setRequestHeader('Content-Type', 'application/json');
+
+    http.send(JSON.stringify(item));
+
+}
+

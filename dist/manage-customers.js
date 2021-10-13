@@ -95,7 +95,6 @@ $('#btn-save').on('click', (eventData) => {
         return;
     }
     ($('#btn-save').html() === 'Save') ? saveCustomer(new Customer(id, name, address)) : updateCustomer(new Customer(id, name, address));
-    // saveCustomer(new Customer(id, name, address));
 });
 /* save customer */
 function saveCustomer(customer) {
@@ -152,6 +151,10 @@ $('#tblCustomers tbody').on('click', 'tr', function (eventData) {
     $('#txtAddress').val(address);
     $('#btn-save').html('Update');
 });
+/**
+ *
+ * @todo: when id changes for a already in customer then that customer is going to update insted the selected one
+ */
 /* update customer */
 function updateCustomer(customer) {
     const http = new XMLHttpRequest();

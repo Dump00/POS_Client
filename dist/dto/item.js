@@ -1,8 +1,8 @@
 export class Item {
-    constructor(code, description, unitPrice, qtyOnHand) {
+    constructor(code, description, qtyOnHand, unitPrice) {
         this.code = code;
         this.description = description;
-        this.unitPrice = unitPrice;
         this.qtyOnHand = qtyOnHand;
+        this.unitPrice = unitPrice;
     }
 }
