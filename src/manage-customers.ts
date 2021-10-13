@@ -212,6 +212,38 @@ $('#tblCustomers tbody').on('click', 'tr', function(eventData) {
     $('#txtName').val(name);
     $('#txtAddress').val(address);
     
-    $('#btn-save').html('Update')
+    $('#btn-save').html('Update');
+
+
+    /* update button click */
+
     
-})
+});
+
+
+
+/* update customer */
+
+function updateCustomer(customer: Customer) {
+
+    const http = new XMLHttpRequest();
+
+    http.onreadystatechange = () => {
+        if(http.readyState === http.DONE){
+            if(http.status !== 201){
+                alert('Failed to updae the customer!')
+                return;
+            }
+            alert('Customer has been updated successfully.')
+            navigateToPage(pageCount);
+        }
+
+    }
+
+    http.open('PUT', CUSTOMER_SERVICE_API + `?id=${customer.id}`, true);
+
+    http.setRequestHeader('Content-Type', 'application/json');
+
+    http.send(JSON.stringify(customer));
+
+}
