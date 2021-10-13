@@ -18,121 +18,112 @@
     <link href="./css/dashboard.css" rel="stylesheet">
   </head>
   <body>
-    
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">WEB POS</a>
-  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</header>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-        <div class="position-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="./index.html">
-                <span data-feather="home"></span>
-                Dashboard
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./manage-customers.html">
-                <span data-feather="file"></span>
-                Manage Customers
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./manage-items.html">
-                <span data-feather="shopping-cart"></span>
-                Manage Items
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./place-order.html">
-                <span data-feather="users"></span>
-                Place Order
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">
-                <span data-feather="bar-chart-2"></span>
-                Search Order
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Search Orders</h1>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Search-Order</li>
-          </ol>
-        </nav>
-      </div>
-      
-      <div class="container">
-        <nav class="navbar navbar-light bg-danger mt-5">
-          <form class="container-fluid">
-            <div class="input-group">
-              <input type="text" class="form-control search-bar" placeholder="Search Anything Or Anyone Here....." >
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">WEB POS</a>
+      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </header>
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="./index.html">
+                    <span data-feather="home"></span>
+                    Dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./manage-customers.html">
+                    <span data-feather="file"></span>
+                    Manage Customers
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./manage-items.html">
+                    <span data-feather="shopping-cart"></span>
+                    Manage Items
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./place-order.html">
+                    <span data-feather="users"></span>
+                    Place Order
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">
+                    <span data-feather="bar-chart-2"></span>
+                    Search Order
+                  </a>
+                </li>
+              </ul>
             </div>
-          </form>
-        </nav>
+          </nav>
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Search Orders</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="./index.html">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Search-Order</li>
+              </ol>
+            </nav>
+          </div>
+          <div class="container">
+            <nav class="navbar navbar-light bg-danger mt-5">
+              <form class="container-fluid">
+                <div class="input-group">
+                  <input type="text" class="form-control search-bar" placeholder="Search Anything Or Anyone Here....." >
+                </div>
+              </form>
+            </nav>
 
-        <table id="tblCustomers" class="table table-bordered table-hover mt-5">
-          <thead>
-              <tr>
-                  <th>Order ID</th>
-                  <th>Order Date</th>
-                  <th>Customer Id</th>
-                  <th>Customer Name</th>
-                  <th>Total</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>OI001</td>
-                  <td>2xxx-xx-xx</td>
-                  <td>C001</td>
-                  <td>xxxxxxxx</td>
-                  <td>xxxx.xx</td>
-              </tr>
-          </tbody>
-          <tfoot>
-              <tr>
-                  <th colspan="4">
-                      <nav aria-label="Page navigation example">
-                          <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                          </ul>
-                        </nav>
-                  </th>
-              </tr>
-          </tfoot>
-      </table>
-
+            <table id="tblCustomers" class="table table-bordered table-hover mt-5">
+              <thead>
+                  <tr>
+                      <th>Order ID</th>
+                      <th>Order Date</th>
+                      <th>Customer Id</th>
+                      <th>Customer Name</th>
+                      <th>Total</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>OI001</td>
+                      <td>2xxx-xx-xx</td>
+                      <td>C001</td>
+                      <td>xxxxxxxx</td>
+                      <td>xxxx.xx</td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <th colspan="4">
+                          <nav aria-label="Page navigation example">
+                              <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                              </ul>
+                            </nav>
+                      </th>
+                  </tr>
+              </tfoot>
+          </table>
+          </div>
+          <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+          </div>
+        </main>
       </div>
-
-
-
-      <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-      </div>
-    </main>
-  </div>
-</div>
-
-<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="./node_modules/jquery/dist/jquery.min.js"></script>
-<script src="./dist/search-order.js"></script>
+    </div>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./dist/search-order.js"></script>
   </body>
 </html>
