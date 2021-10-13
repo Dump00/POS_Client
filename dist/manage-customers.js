@@ -141,3 +141,13 @@ function deleteCustomer(id) {
     http.open('DELETE', CUSTOMER_SERVICE_API + `?id=${id}`, true);
     http.send();
 }
+/* table row click */
+$('#tblCustomers tbody').on('click', 'tr', function (eventData) {
+    const id = $(this).find('td:first-child').html();
+    const name = $(this).find('td:nth-child(2)').html();
+    const address = $(this).find('td:nth-child(3)').html();
+    $('#txtId').val(id);
+    $('#txtName').val(name);
+    $('#txtAddress').val(address);
+    $('#btn-save').html('Update');
+});
