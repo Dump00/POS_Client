@@ -163,11 +163,39 @@ function saveCustomer(customer: Customer): void {
 /* trash button click */
 
 $('#tblCustomers tbody').on('click', 'tr td i', function(eventData) {
-    
+
     const id = $(this).parent().parent().find('td:first-child').html();
+
+    deleteCustomer(id);
     
 });
 
+/**
+ * 
+ * @todo: small bug;
+ * whenever deleted the last data on the table table should move backwords on previus paginated page
+ */
+
 
 /* delete the customer */
+
+function deleteCustomer(id: string): void {
+    
+    const http = new XMLHttpRequest();
+
+    http.onreadystatechange = () => {
+        if(http.readyState === http.DONE){
+            if(http.status !== 204){
+                alert('Failed to delete the customer!')
+                return;
+            }
+            alert('Customer has been deleted successfully.')
+            navigateToPage(pageCount);
+        }
+    }
+
+    http.open('DELETE', CUSTOMER_SERVICE_API + `?id=${id}`, true);
+
+    http.send();
+}
 
