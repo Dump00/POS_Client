@@ -212,7 +212,10 @@ $('#tblItems tbody').on('click', 'tr', function(eventData) {
     const qtyOnHand = $(this).find('td:nth-child(3)').html();
     const unitPrice = $(this).find('td:nth-child(4)').html();
     
-    $('#txtCode').val(code);
+    $('#txtCode').val(code).on('keydown', (e) => {
+        e.preventDefault();
+        return false;
+     });
     $('#txtDescription').val(description);
     $('#txtQtyOnHand').val(qtyOnHand);
     $('#txtUnitPrice').val(unitPrice);
@@ -220,12 +223,6 @@ $('#tblItems tbody').on('click', 'tr', function(eventData) {
     $('#btn-save').html('Update');
                 
 });
-
-/**
- * 
- * @todo: when code changes for a already in item then that item is going to update insted the selected one
- */
-
 
 /* update item */
 
@@ -240,7 +237,7 @@ function updateItem(item: Item) {
                 return;
             }
             alert('Item has been updated successfully.');
-            $('#txtCode').val('');
+            $('#txtCode').val('').off('keydown');
             $('#txtDescription').val('');
             $('#txtQtyOnHand').val('');
             $('#txtUnitPrice').val('');
@@ -263,7 +260,7 @@ function updateItem(item: Item) {
 
 $('#btn-clear').on('click', () => {
     
-    $('#txtCode').val('');
+    $('#txtCode').val('').off('keydown');
     $('#txtDescription').val('');
     $('#txtQtyOnHand').val('');
     $('#txtUnitPrice').val('');

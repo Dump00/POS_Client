@@ -144,15 +144,14 @@ $('#tblCustomers tbody').on('click', 'tr', function (eventData) {
     const id = $(this).find('td:first-child').html();
     const name = $(this).find('td:nth-child(2)').html();
     const address = $(this).find('td:nth-child(3)').html();
-    $('#txtId').val(id);
-    $('#txtName').val(name);
+    $('#txtId').val(id).on('keydown', (e) => {
+        e.preventDefault();
+        return false;
+    });
+    $('#txtName').val(name).trigger('focus');
     $('#txtAddress').val(address);
     $('#btn-save').html('Update');
 });
-/**
- *
- * @todo: when id changes for a already in customer then that customer is going to update insted the selected one
- */
 /* update customer */
 function updateCustomer(customer) {
     const http = new XMLHttpRequest();
@@ -163,7 +162,7 @@ function updateCustomer(customer) {
                 return;
             }
             alert('Customer has been updated successfully.');
-            $('#txtId').val('');
+            $('#txtId').val('').off('keydown');
             $('#txtName').val('');
             $('#txtAddress').val('');
             $('#btn-save').html('Save');
@@ -176,7 +175,7 @@ function updateCustomer(customer) {
 }
 /* clear button event */
 $('#btn-clear').on('click', () => {
-    $('#txtId').val('');
+    $('#txtId').val('').off('keydown');
     $('#txtName').val('');
     $('#txtAddress').val('');
     $('#btn-save').html('Save');
