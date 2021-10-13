@@ -129,8 +129,8 @@ $('#btn-save').on('click', (eventData) => {
         txtAddress.trigger('select');
         return;
     }
-
-    saveCustomer(new Customer(id, name, address));
+    ($('#btn-save').html() === 'Save') ? saveCustomer(new Customer(id, name, address)): updateCustomer(new Customer(id, name, address));
+    // saveCustomer(new Customer(id, name, address));
 })
 
 /* save customer */
@@ -211,15 +211,10 @@ $('#tblCustomers tbody').on('click', 'tr', function(eventData) {
     $('#txtId').val(id);
     $('#txtName').val(name);
     $('#txtAddress').val(address);
-    
+
     $('#btn-save').html('Update');
-
-
-    /* update button click */
-
-    
+                
 });
-
 
 
 /* update customer */
@@ -230,11 +225,15 @@ function updateCustomer(customer: Customer) {
 
     http.onreadystatechange = () => {
         if(http.readyState === http.DONE){
-            if(http.status !== 201){
+            if(http.status !== 204){
                 alert('Failed to updae the customer!')
                 return;
             }
-            alert('Customer has been updated successfully.')
+            alert('Customer has been updated successfully.');
+            $('#txtId').val('');
+            $('#txtName').val('');
+            $('#txtAddress').val('');
+            $('#btn-save').html('Save');
             navigateToPage(pageCount);
         }
 
