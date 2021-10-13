@@ -103,7 +103,6 @@ $('#btn-save').on('click', (eventData) => {
 });
 /* save item */
 function saveItem(item) {
-    console.log(item);
     const http = new XMLHttpRequest();
     http.onreadystatechange = () => {
         if (http.readyState === http.DONE) {
@@ -141,6 +140,11 @@ function deleteItem(code) {
                 return;
             }
             alert('Item has been deleted successfully.');
+            $('#txtCode').val('').off('keydown');
+            $('#txtDescription').val('');
+            $('#txtQtyOnHand').val('');
+            $('#txtUnitPrice').val('');
+            $('#btn-save').html('Save');
             navigateToPage(pageCount);
         }
     };

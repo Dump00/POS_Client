@@ -185,7 +185,12 @@ function deleteCustomer(id: string): void {
                 alert('Failed to delete the customer!')
                 return;
             }
-            alert('Customer has been deleted successfully.')
+            alert('Customer has been deleted successfully.');
+            $('#txtId').val('').off('keydown');
+            $('#txtName').val('');
+            $('#txtAddress').val('');
+        
+            $('#btn-save').html('Save');
             navigateToPage(pageCount);
         }
     }

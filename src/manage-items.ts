@@ -136,10 +136,7 @@ $('#btn-save').on('click', (eventData) => {
 
 /* save item */
 
-function saveItem(item: Item): void {
-
-    console.log(item);
-    
+function saveItem(item: Item): void {    
 
     const http = new XMLHttpRequest();
 
@@ -193,7 +190,13 @@ function deleteItem(code: string): void {
                 alert('Failed to delete the item!')
                 return;
             }
-            alert('Item has been deleted successfully.')
+            alert('Item has been deleted successfully.');
+            $('#txtCode').val('').off('keydown');
+            $('#txtDescription').val('');
+            $('#txtQtyOnHand').val('');
+            $('#txtUnitPrice').val('');
+        
+            $('#btn-save').html('Save');
             navigateToPage(pageCount);
         }
     }
