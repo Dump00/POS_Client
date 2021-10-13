@@ -259,3 +259,15 @@ function updateItem(item: Item) {
 
 }
 
+/* clear button event */
+
+$('#btn-clear').on('click', () => {
+    
+    $('#txtCode').val('');
+    $('#txtDescription').val('');
+    $('#txtQtyOnHand').val('');
+    $('#txtUnitPrice').val('');
+
+    $('#btn-save').html('Save');
+    
+})

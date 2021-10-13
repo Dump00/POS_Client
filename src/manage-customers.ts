@@ -22,10 +22,7 @@ function loadAllCustomers(): void {
 
     http.onreadystatechange = () => {
         if(http.readyState === http.DONE){
-            if(http.status !== 200){
-                alert('Failed to fetch customers, try again..!');
-                return;
-            }
+            if(http.status !== 200) return;
             totalCustomers = +(http.getResponseHeader('X-Total-Count'))!;
             customers = JSON.parse(http.responseText); 
             $('#tblCustomers tbody tr').remove();
@@ -250,3 +247,15 @@ function updateCustomer(customer: Customer) {
     http.send(JSON.stringify(customer));
 
 }
+
+/* clear button event */
+
+$('#btn-clear').on('click', () => {
+    
+    $('#txtId').val('');
+    $('#txtName').val('');
+    $('#txtAddress').val('');
+
+    $('#btn-save').html('Save');
+    
+})

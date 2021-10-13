@@ -185,3 +185,11 @@ function updateItem(item) {
     http.setRequestHeader('Content-Type', 'application/json');
     http.send(JSON.stringify(item));
 }
+/* clear button event */
+$('#btn-clear').on('click', () => {
+    $('#txtCode').val('');
+    $('#txtDescription').val('');
+    $('#txtQtyOnHand').val('');
+    $('#txtUnitPrice').val('');
+    $('#btn-save').html('Save');
+});
