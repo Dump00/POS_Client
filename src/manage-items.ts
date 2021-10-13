@@ -162,3 +162,42 @@ function saveItem(item: Item): void {
 
     http.send(JSON.stringify(item));
 }
+
+/* trash button click */
+
+$('#tblItems tbody').on('click', 'tr td i',  function(eventData){
+    
+    const code = $(this).parent().parent().find('td:first-child').html();
+
+    deleteItem(code)
+    
+});
+
+/**
+ * 
+ * @todo: small bug;
+ * whenever deleted the last data on the table table should move backwords on previus paginated page
+ */
+
+
+/* delete the item */
+
+function deleteItem(code: string): void {
+    
+    const http = new XMLHttpRequest();
+
+    http.onreadystatechange = () => {
+        if(http.readyState === http.DONE){
+            if(http.status !== 204){
+                alert('Failed to delete the item!')
+                return;
+            }
+            alert('Item has been deleted successfully.')
+            navigateToPage(pageCount);
+        }
+    }
+
+    http.open('DELETE', ITEM_SERVICE_API + `?code=${code}`, true);
+
+    http.send();
+}
