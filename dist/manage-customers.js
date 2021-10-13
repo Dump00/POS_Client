@@ -115,3 +115,8 @@ function saveCustomer(customer) {
     http.setRequestHeader('Content-Type', 'application/json');
     http.send(JSON.stringify(customer));
 }
+/* trash button click */
+$('#tblCustomers tbody').on('click', 'tr td i', function (eventData) {
+    const id = $(this).parent().parent().find('td:first-child').html();
+});
+/* delete the customer */

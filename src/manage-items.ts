@@ -130,15 +130,10 @@ $('#btn-save').on('click', (eventData) => {
     }
 
     saveItem(new Item(code, description, +qtyOnHand, +unitPrice));
-});
+})
 
 
 /* save item */
-
-
-/**
- * Bug!
- */
 
 function saveItem(item: Item): void {
 

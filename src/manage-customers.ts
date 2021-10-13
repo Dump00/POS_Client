@@ -131,7 +131,7 @@ $('#btn-save').on('click', (eventData) => {
     }
 
     saveCustomer(new Customer(id, name, address));
-});
+})
 
 /* save customer */
 
@@ -159,3 +159,15 @@ function saveCustomer(customer: Customer): void {
 
     http.send(JSON.stringify(customer));
 }
+
+/* trash button click */
+
+$('#tblCustomers tbody').on('click', 'tr td i', function(eventData) {
+    
+    const id = $(this).parent().parent().find('td:first-child').html();
+    
+});
+
+
+/* delete the customer */
+
